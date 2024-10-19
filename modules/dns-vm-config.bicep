@@ -185,7 +185,7 @@ resource vmExtension 'Microsoft.Compute/virtualMachines/extensions@2021-07-01' =
       fileUris: [
         'https://raw.githubusercontent.com/lualvare/aks-net-outbound-troubleshooting-1/refs/heads/lualvare-priv-branch/modules/powershell-dns-installation.ps1'
       ]
-      commandToExecute: 'powershell -ExecutionPolicy Unrestricted -File powershell.ps1'
+      commandToExecute: 'powershell -ExecutionPolicy Unrestricted -File powershell-dns-installation.ps1'
     }
   }
 }
