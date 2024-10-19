@@ -191,4 +191,4 @@ resource vmExtension 'Microsoft.Compute/virtualMachines/extensions@2021-07-01' =
 }
 
 
-output hostname string = publicIp.properties.dnsSettings.fqd
+output hostname string = publicIp.properties.dnsSettings.fqdn
