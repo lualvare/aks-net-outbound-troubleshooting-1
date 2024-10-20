@@ -79,6 +79,7 @@ module dbvnet './modules/db-vnet.bicep' = {
 }
 */
 
+/*
 module privatednszone './modules/private-dns-zone.bicep' = {
   name: 'private-dns-zone'
   scope: dbrg
@@ -93,7 +94,9 @@ module privatednszone './modules/private-dns-zone.bicep' = {
     dbVnetId: dbvnet.outputs.dbVnetId
   }
 }
+*/
 
+/*
 module vnetpeeringdb './modules/vnetpeering.bicep' = {
   scope: dbrg
   name: 'vnetpeering'
@@ -109,7 +112,9 @@ module vnetpeeringdb './modules/vnetpeering.bicep' = {
     }    
   }
 }
+*/
 
+/*
 module vnetpeeringaks './modules/vnetpeering.bicep' = {
   scope: vnetrg
   name: 'vnetpeering2'
@@ -125,7 +130,9 @@ module vnetpeeringaks './modules/vnetpeering.bicep' = {
     }    
   }
 }
+*/
 
+/*
 module postgresqlModule './modules/postgresql-flexible-server.bicep' = {
   scope: dbrg
   name: 'postgresqlModule'
@@ -141,11 +148,12 @@ module postgresqlModule './modules/postgresql-flexible-server.bicep' = {
     privateDnsZoneId: privatednszone.outputs.privateDnsZoneId
   }
 }
+*/
 
 module akscluster './modules/aks-cluster.bicep' = {
   name: resourceName
   scope: clusterrg
-  dependsOn: [ aksvnet, privatednszone ]
+  dependsOn: [ aksvnet ] //, privatednszone ]
   params: {
     location: location
     clusterName: 'aks-${resourceName}'
