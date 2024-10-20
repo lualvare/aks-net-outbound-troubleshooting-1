@@ -3,6 +3,7 @@ targetScope = 'subscription'
 param location string = 'canadacentral'
 param userName string = 'lab1'
 param resourceName string = 'api-connection'
+//param dnsvm string = 'custom-dns-vm'
 //param zoneName string = 'postgresdb1-workbench-lab1.private.postgres.database.azure.com'
 //param recordName string = 'db1'
 
@@ -24,7 +25,7 @@ resource vnetrg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   location: location
 }
 
-resource dnsvm 'Microsoft.Resources/resourceGroups@2021-04-01' = {
+resource dnsvmrg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   name: dnsvmResourceGroupName
   location: location
 }
@@ -184,9 +185,10 @@ module kubernetes './modules/workloads.bicep' = {
   }
 }
 
-
 module dnsvm './modules/dns-vm-config.bicep' = {
-  name: 'dns'
-  scope:   >>>>> STOPPED HERE <<<<<<
-
-
+  name: 'dnsvm'
+  scope: dnsvm
+  params: {
+     location: location
+  }
+}
