@@ -174,7 +174,7 @@ module roleAuthorization './modules/aks-auth.bicep' = {
 }
 
 module kubernetes './modules/workloads.bicep' = {
-  name: 'buildbicep-deploy'
+  name: 'luis-test-deployment'
   scope: clusterrg
   dependsOn: [
     akscluster
@@ -183,3 +183,10 @@ module kubernetes './modules/workloads.bicep' = {
     kubeConfig: akscluster.outputs.kubeConfig
   }
 }
+
+
+module dnsvm './modules/dns-vm-config.bicep' = {
+  name: 'dns'
+  scope:   >>>>> STOPPED HERE <<<<<<
+
+
