@@ -6,38 +6,39 @@ provider kubernetes with {
   kubeConfig: kubeConfig
 }
 
-resource appsDeployment_dbCheck 'apps/Deployment@v1' = {
+resource appsDeployment_test 'apps/Deployment@v1' = {
   metadata: {
-    name: 'luis-test-deployment'
+    name: 'luis-test'
+    namespace: 'kube-system'
     labels: {
-      app: 'luis-test-deployment'
+      app: 'luis-test'
     }
   }
   spec: {
-    replicas: 2
+    replicas: 1
     selector: {
       matchLabels: {
-        app: 'luis-test-deployment'
+        app: 'luis-test'
       }
     }
     template: {
       metadata: {
         labels: {
-          app: 'luis-test-deployment'
+          app: 'luis-test'
         }
       }
       spec: {
         containers: [
           {
-            name: 'luis-test-deployment'
+            name: 'luis-test'
             image: 'nginx'
-            }
-          ]
+          }
+        ]
+      }
+    }
+  }
+}
       
-*/
-
-
-
 
 /*
 resource coreConfigMap_dbMonitorConfig 'core/ConfigMap@v1' = {
