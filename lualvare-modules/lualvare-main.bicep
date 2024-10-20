@@ -2,15 +2,17 @@ targetScope = 'subscription'
 
 param location string = 'canadacentral'
 param userName string = 'lab1'
-param resourceName string = 'BicepResourceGroup'
-param zoneName string = 'postgresdb1-workbench-lab1.private.postgres.database.azure.com'
-param recordName string = 'db1'
+param resourceName string = 'api-connection'
+//param zoneName string = 'postgresdb1-workbench-lab1.private.postgres.database.azure.com'
+//param recordName string = 'db1'
 
-var postgresqlName = 'postgresql-${userName}-${uniqueString(subscription().id)}'
+//var postgresqlName = 'postgresql-${userName}-${uniqueString(subscription().id)}'
 var aksResourceGroupName = 'aks-${resourceName}-${userName}-rg'
 var vnetResourceGroupName = 'vnet-${resourceName}-${userName}-rg'
-var dbResourceGroupName = 'db-${resourceName}-${userName}-rg'
-var contributorRoleId = subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')
+var dnsvmResourceGroupName = 'dnsvm-${resourceName}-${userName}-rg'
+
+// WHAT IS THIS FOR????     <<<<<<<<<<<<<<<<<<<<<<============================
+//var contributorRoleId = subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')
 
 resource clusterrg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   name: aksResourceGroupName
@@ -22,11 +24,12 @@ resource vnetrg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   location: location
 }
 
-resource dbrg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
-  name: dbResourceGroupName
+resource dnsvm 'Microsoft.Resources/resourceGroups@2021-04-01' = {
+  name: dnsvmResourceGroupName
   location: location
 }
 
+//HERE IS THE VNET PART
 module aksvnet './modules/aks-vnet.bicep' = {
   name: 'aks-vnet'
   scope: vnetrg
