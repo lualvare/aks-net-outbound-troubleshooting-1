@@ -128,7 +128,7 @@ resource appsDeployment_dbCheck 'apps/Deployment@v1' = {
 */
 
 
-*/
+/*
 resource coreServiceAccount_runner1 'core/ServiceAccount@v1' = {
   metadata: {
     name: 'runner1'
