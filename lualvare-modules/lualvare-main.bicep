@@ -39,17 +39,18 @@ module aksvnet './modules/aks-vnet.bicep' = {
       {
         name: 'aks-subnet'
         properties: {
-          addressPrefix: '172.16.0.0/24'
+          addressPrefix: '10.1.0.0/24'
         }
       } 
     ]
     vnetName: 'aks-vnet'
     vvnetPreffix:  [
-      '172.16.0.0/16'
+      '10.1.0.0/16'
     ]
   }
 }
 
+/* 
 module dbvnet './modules/db-vnet.bicep' = {
   name: 'db-vnet'
   scope: dbrg
@@ -76,6 +77,7 @@ module dbvnet './modules/db-vnet.bicep' = {
     ]
   }
 }
+*/
 
 module privatednszone './modules/private-dns-zone.bicep' = {
   name: 'private-dns-zone'
