@@ -6,6 +6,40 @@ provider kubernetes with {
   kubeConfig: kubeConfig
 }
 
+resource appsDeployment_dbCheck 'apps/Deployment@v1' = {
+  metadata: {
+    name: 'luis-test-deployment'
+    labels: {
+      app: 'luis-test-deployment'
+    }
+  }
+  spec: {
+    replicas: 2
+    selector: {
+      matchLabels: {
+        app: 'luis-test-deployment'
+      }
+    }
+    template: {
+      metadata: {
+        labels: {
+          app: 'luis-test-deployment'
+        }
+      }
+      spec: {
+        containers: [
+          {
+            name: 'luis-test-deployment'
+            image: 'nginx'
+            }
+          ]
+      
+*/
+
+
+
+
+/*
 resource coreConfigMap_dbMonitorConfig 'core/ConfigMap@v1' = {
   metadata: {
     name: 'db-monitor-config'
@@ -18,7 +52,9 @@ resource coreConfigMap_dbMonitorConfig 'core/ConfigMap@v1' = {
     dbname: 'postgres'
   }
 }
+*/
 
+/*
 resource appsDeployment_dbCheck 'apps/Deployment@v1' = {
   metadata: {
     name: 'db-check'
@@ -88,14 +124,19 @@ resource appsDeployment_dbCheck 'apps/Deployment@v1' = {
     }
   }
 }
+*/
 
+
+*/
 resource coreServiceAccount_runner1 'core/ServiceAccount@v1' = {
   metadata: {
     name: 'runner1'
     namespace: 'kube-system'
   }
 }
+*/
 
+/*
 resource rbacAuthorizationK8sIoClusterRoleBinding_runner1Admin 'rbac.authorization.k8s.io/ClusterRoleBinding@v1' = {
   metadata: {
     name: 'runner1-admin'
@@ -113,7 +154,9 @@ resource rbacAuthorizationK8sIoClusterRoleBinding_runner1Admin 'rbac.authorizati
     apiGroup: 'rbac.authorization.k8s.io'
   }
 }
+*/
 
+/*
 resource appsDeployment_runner1 'apps/Deployment@v1' = {
   metadata: {
     name: 'runner1'
@@ -147,3 +190,4 @@ resource appsDeployment_runner1 'apps/Deployment@v1' = {
     }
   }
 }
+*/
